@@ -1,5 +1,6 @@
 # modules
 import streamlit as st
+import time
 import pandas as pd
 
 # page
@@ -121,6 +122,23 @@ if st.session_state.show_or_not:
     st.write('Hello')
 else:
     st.write('Goodbye')
-    
 
+
+##### CACHED FUNCTIONS
+st.subheader('Cached functions', divider='rainbow')
+
+@st.cache_data(show_spinner=False)
+def expensive_computation(a, b):
+    time.sleep(3)
+    return a * b
+
+columns = st.columns(2)
+with columns[0]:
+    st.radio('Choose a number', [1, 2, 3], key='a', horizontal=True)
+with columns[1]:
+    st.radio('Choose another number', [4, 5, 6], key='b', horizontal=True)
+
+with st.spinner('Computing...'):
+    result = expensive_computation(st.session_state.a, st.session_state.b)
+    st.write('Result:', result)
     
