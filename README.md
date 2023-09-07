@@ -49,3 +49,13 @@ streamlit is just a library for building simple websites, and a free hosting ser
 * we can use containers to group widgets
 * we can use expanders to hide widgets
 
+
+### deploy
+
+* streamlit has a free hosting service
+* to use it, just create an account on their website, and:
+    * create a project — associated with a github repo — and a main file to run
+    * whenever you push to the repo, the website will be updated:
+        * it will install the python dependencies from `requirements.txt`
+        * it will run the main file, and serve the website
+        * one can inspect the logs to see what happened
